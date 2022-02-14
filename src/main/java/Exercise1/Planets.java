@@ -58,6 +58,15 @@ public class Planets {
         }
         return listPlanet;
     }
+   
+   public void calculateAttractionGravitational(Planets p1, Planets p2) {
+       double constant = 6.67E11;
+       double dist = p1.getDistance() - p2.getDistance();
+       if(dist < 0) {
+           dist = dist*(-1);
+       }
+       return  ((constant* p1.getMass()* p2.getMass()) / dist);
+   }
     
 }
     
