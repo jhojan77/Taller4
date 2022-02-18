@@ -1,0 +1,11 @@
+Ejercicio 2. ¿Es posible ejecutar un programa en java que contenga varias clases con métodos main? 
+En caso positivo, ¿cómo se determina el punto de entrada a un programa?
+respuesta: 
+Si se puede tener varias clases con metodos main, pero como java es un lenguaje de programacion orientado a objetos todo el
+procesamiento de la informacion se realiza dentro de las clases implementadas y al compilar  el codigo significa que la máquina virtual de Java
+cargue la clase y luego comience la ejecución de su método principal siempre definido como public static void main(String[] args)
+que viene siendo la entrada de cualquier programa en Java, sin el modificador de acceso públic JVM no puede identificar el punto de ejecución del programa
+y generaria error. 
+Si se utilizan otros modificadores de acceso en lugar de public, no será visible para JVM, en conclusion el punto de entrada seria
+el metodo con el modificador de acceso que tenga por instancia y venga por parametro como string[ ] arg.
+

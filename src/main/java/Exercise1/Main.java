@@ -1,7 +1,7 @@
 
 package Exercise1;
 
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
 /**
@@ -11,92 +11,85 @@ import java.util.Scanner;
 public class Main {
 
     
-    public static void main(String[] args) {
-        System.out.println("***¡Bienvenido...***");
-        Planets planet = new Planets();
-        planet.listPlanet();
-        menu(planet);
-       
-    }
-    public static boolean isNumeric(String answer) {
+        public static void main(String[] args) {
+            System.out.println("***¡Bienvenido...***");
+            Planets planet = new Planets();
+            planet.listPlanet();
+            menu(planet);
 
-        boolean result;
+        }
+        public static boolean isNumeric(String answer) {
 
-        try {
-            Integer.parseInt(answer);
-            result = true;
-        } catch (NumberFormatException excepcion) {
-            result = false;
+            boolean result;
+
+            try {
+                Integer.parseInt(answer);
+                result = true;
+            } catch (NumberFormatException excepcion) {
+                result = false;
+            }
+
+            return result;
         }
 
-        return result;
-    }
+        public static void menu(Planets planet) {
 
-    public static void menu(Planets planet) {
+            System.out.println("#### ¿Que acción quieres realizar? ###");
 
-        System.out.println("#### ¿Que acción quieres realizar? ###");
-
-        System.out.println("1. Mostrar lista de planetas.");
-        System.out.println("2. calcular fuerza gravitatoria:");
-        System.out.println("Ingrese 3 u otro valor para finalizar.");
-        System.out.println("Introduzca su respuesta: ");
-        Scanner answer = new Scanner(System.in);
-        String inputKeyboard = answer.nextLine();
+            System.out.println("1. Mostrar lista de planetas.");
+            System.out.println("2. Calcular fuerza gravitatoria:");
+            System.out.println("Ingrese 3 u otro valor para finalizar.");
+            System.out.println("Introduzca su respuesta: ");
+            Scanner answer = new Scanner(System.in);
+            String inputKeyboard = answer.nextLine();
 
              if (isNumeric(String.valueOf(inputKeyboard))) {
-
-            int ship = Integer.parseInt(String.valueOf(inputKeyboard));
-
-                 if (ship == 1) {
-                     System.out.println( "Id" + "    " + "Nombre" + "       " + "Masa" + "       " + 
-                               "Densidad" + "        " + "Diametro" + "     " +"Distancia al sol");
-                    for(PlanetarySystem ps : planet.getPlanetList()){
-                    System.out.println(ps.show());
+                 int ship = Integer.parseInt(String.valueOf(inputKeyboard));
+                    
+              if (ship == 1) {
+                    System.out.println( "Id" + "    " + "Nombre");
+                       for(PlanetarySystem ps : planet.getPlanetList()){
+                       System.out.println(ps.showPlanet());
                 }
                 System.out.println("\n");
-                        
                 menu(planet);
 
             } else if (ship == 2) {
-
-               System.out.println("Digite el planeta #1: ");
-                String planet1 = answer.nextLine();
-                   if(isNumeric(planet1)){
-                    ArrayList<PlanetarySystem> listPlanet = planet.filterplanet(planet1);
-                    if(listPlanet.size() == 9) {
-                        System.out.println("No existe planeta");
-                    } else {
-                        for(PlanetarySystem ps :  listPlanet) {
-                            System.out.println(ps.show());
-                        }
-                        System.out.println("Digite el planeta #2: ");
-                         String planet2 = answer.nextLine();
-                    }
-                    System.out.println("\n");
-                    menu(planet);
-
-                    }else{
-                    System.out.println("Lo siento, no puede ingresar texto");
-                    System.out.println("\n");
-                    menu(planet);
+                System.out.println( "Id" + "    " + "Nombre" + "       " + "Masa" + "       " + 
+                               "Densidad" + "        " + "Diametro" + "     " + "Distancia al sol");
+                for(PlanetarySystem ps : planet.getPlanetList()){
+                    System.out.println(ps.show());
                 }
-             
+                System.out.println("Digite el id del planeta #1: ");
+                    int idP1 = answer.nextInt();
+                System.out.println("Digite el id del planeta #2: ");
+                    int idP2 = answer.nextInt();
+                
+                PlanetarySystem p1 = planet.fingPlanetaForID(idP1);
+                PlanetarySystem p2 = planet.fingPlanetaForID(idP2);
+                    
+                if(p1 == null || p2 == null) {
+                    System.out.println("Uno de los id del planeta es incorrecto");
                 } else {
+                    double fg = planet.calculateAttractionGravitational(p1, p2);
+                    System.out.println("La fuerza gravitacional entre " + p1.getName() + " y " + p2.getName() + "es: " + fg);
+                }
+                System.out.println("\n");
+                menu(planet);
+                
+            } else {
                 System.out.println("El programa ha finalizado, Valor ingresado -> " + ship);
                 System.out.println("\n");
-              }
+            }
 
 
             } else {
             System.out.println("Lo siento, el valor ingresado no es correcto");
             System.out.println("\n");
             menu(planet);
-         }
-
-       }
-    
-    
-    }
+          }
+      }
+   }
    
     
 

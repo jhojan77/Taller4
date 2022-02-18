@@ -1,22 +1,36 @@
 
 package Exercise3;
-
+/**
+ * clase numeros 
+ * @author jhojan hoyos
+ */
 public class Number {
      
-    //Método para ordenar el array de menor a mayor con metodo burbuja
+    /**
+     * Metodo burbuja para ordenar de manera descendente los numeros aleatorios generados
+     * @param arrayRandom
+     * @return 
+     */
     public static int[] orderBurbuja(int[] arrayRandom) {
         for (int i = 1; i < arrayRandom.length; i++) {
             for (int j = 0; j < arrayRandom.length - i; j++) {
                 if (arrayRandom[j] > arrayRandom[j + 1]) {
-                    int aux = arrayRandom[j];
-                    arrayRandom[j] = arrayRandom[j + 1];
-                    arrayRandom[j + 1] = aux;
+                   int aux = arrayRandom[j];
+                     arrayRandom[j] = arrayRandom[j + 1];
+                       arrayRandom[j + 1] = aux;
                 }
             }
         }
         return arrayRandom;
    }
     
+    /***
+     * Metodo+quick sort para ordenar de manera descendente los numeros aleatorios generados
+     * @param arrayRandom
+     * @param izq
+     * @param der
+     * @return 
+     */
     public static int[] orderQuickSort(int[] arrayRandom, int izq, int der) {
 
         int pivote=arrayRandom[izq]; // tomamos primer elemento como pivote
@@ -25,8 +39,8 @@ public class Number {
         int aux;
 
         while(i < j){                          // mientras no se crucen las búsquedas                                   
-            while(arrayRandom[i] <= pivote && i < j) i++; // busca elemento mayor que pivote
-            while(arrayRandom[j] > pivote) j--;           // busca elemento menor que pivote
+           while(arrayRandom[i] <= pivote && i < j) i++; // busca elemento mayor que pivote
+             while(arrayRandom[j] > pivote) j--;           // busca elemento menor que pivote
                 if (i < j) {                        // si no se han cruzado                      
                     aux= arrayRandom[i];                      // los intercambia
                     arrayRandom[i]=arrayRandom[j];
