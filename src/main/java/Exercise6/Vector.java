@@ -51,6 +51,7 @@ public class Vector {
     /**
      * metodo retorna la posicion del vector
      * @param posicion 
+     * @return  
      */
     public int getElemento(int posicion) {
         return array[posicion];
@@ -58,7 +59,7 @@ public class Vector {
     
     /**
      * metodo que retorna el tamaño del vector
-     * @param size
+     * @return 
      */
     public int size() {
         return array.length;

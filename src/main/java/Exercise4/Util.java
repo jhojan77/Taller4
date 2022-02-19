@@ -14,14 +14,14 @@ public class Util {
      * @return 
      */
     public static int obtenerEntero(String msj) {
-        Scanner teclado = new Scanner(System.in);
+        Scanner entry = new Scanner(System.in);
         
         int numero  = 0;
         boolean esNumerico = false;
         
         do {
             System.out.println(msj);
-            String numeroStr = teclado.next();
+            String numeroStr = entry.next();
             try {
                 numero = Integer.parseInt(numeroStr);
                 esNumerico = true;
